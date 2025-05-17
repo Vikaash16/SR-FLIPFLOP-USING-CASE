@@ -4,6 +4,9 @@
 
 To implement  SR flipflop using verilog and validating their functionality using their functional tables
 
+# Name: Vikaash P
+# Reg.No: 212223240180
+
 **SOFTWARE REQUIRED:**
 
 Quartus prime
@@ -40,9 +43,37 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
 */
+```c
+module sr_ff (s, r, clk, rst, q);
+  input s, r, clk, rst;
+  output reg q;
+
+  always @(posedge clk or posedge rst)
+begin
+    if (rst)
+     q <= 0; // Reset the flip-flop
+    else
+begin
+      case ({s, r}) // S and R control the behavior
+        2'b00: q <= q;    // No change
+        2'b01: q <= 0;    // Reset
+        2'b10: q <= 1;    // Set
+        2'b11: q <= 0;    // Invalid state, typically treated as reset
+      endcase
+    end
+  end
+endmodule
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
+![image](https://github.com/user-attachments/assets/e666611b-a243-4449-b32d-20d65f77ad9a)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/user-attachments/assets/e54be0ee-276d-41fc-adc8-e7b155f22ec1)
+
 
 **RESULTS**
+Thus the SR flipflop is implemented using verilog and validated their functionality using their functional tables
+
+
